@@ -1,0 +1,58 @@
+create database events;
+
+use events;
+
+
+CREATE TABLE organizer
+(
+  id int  NOT NULL AUTO_INCREMENT,NAME varchar(20)  NOT NULL,
+  created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+);
+
+
+CREATE TABLE venue
+(
+  id         int NOT NULL AUTO_INCREMENT,
+  created    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  name       varchar(256),
+  streetaddress    varchar(256),
+  streetaddress2   varchar(256),
+  city              varchar(256),
+  state             varchar(256),
+  country           VARCHAR(256),
+  postalcode       varchar(256),
+  PRIMARY KEY (id)
+);
+
+
+CREATE TABLE event
+(
+  id              int	NOT NULL AUTO_INCREMENT,
+  created         TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
+  name            varchar(256),
+  description     varchar(2048),
+  starttime      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  endtime        TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  zoneid         blob,
+  started       int,
+  organizer_id    int                          NOT NULL,
+  venue_id        int,
+  PRIMARY KEY (id),
+   FOREIGN KEY (organizer_id) REFERENCES organizer(id) ON DELETE CASCADE,
+  FOREIGN KEY (venue_id) REFERENCES venue(id)
+);
+
+
+CREATE TABLE participant
+(
+  id  	int        NOT NULL AUTO_INCREMENT,
+  created    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  name      varchar(256) NOT NULL,
+  email      varchar(256) NOT NULL,
+  checkedin   int,
+  event_id    int        NOT NULL,
+  PRIMARY KEY (ID),
+  FOREIGN KEY (event_id) REFERENCES event(id),
+  UNIQUE (event_id, email)
+);

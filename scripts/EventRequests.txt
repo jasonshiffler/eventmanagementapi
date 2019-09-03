@@ -1,0 +1,65 @@
+1) Create Organizer:
+
+URL:
+
+http://localhost:8080/events-api/organizers
+
+POST Request Body:
+
+{
+  "name" : "Jason Shiffler"
+}
+
+
+Create Event with Venue:
+
+URL:
+
+http://localhost:8080/events-api/events
+
+2) POST Request Body:
+
+{
+  "name" : "Rain Makers",
+  "description": "Make it Rain!",
+  "startTime" : "2017-08-29T14:46:18Z",
+  "endTime" : "2017-08-29T16:46:18Z",
+  "zoneId" : "US/Central",
+  "organizer" : "/organizers/1",
+  "venue" : {
+    "name" : "Jason's Sales Co",
+    "streetAddress" : "12345",
+    "streetAddress2" : "Pacific Ave",
+    "city" : "Virginia Beach",
+    "state" : "VA",
+    "country" : "United States",
+    "postalCode" : "23450"
+  }
+
+}
+
+
+3) Create Participant:
+
+URL:
+
+http://localhost:8080/events-api/participants
+
+POST Request Body:
+
+{
+  "name" : "Gil ",
+  "email" : "gil@gmail.com",
+  "event" : "/events/1",
+  "checkedIn":"false"
+}
+
+
+4) Bonus Material
+
+Using the PagingAndSorting Repository with Spring data rest allows you to sort with no extra configuration. You can sort
+on multiple query parameters if you want to. It also allows for paging functionality.
+
+-http://localhost:8080/events-api/events?sort=id,desc,sort=name
+
+-http://localhost:8080/events-api/events?page=0&size=5
