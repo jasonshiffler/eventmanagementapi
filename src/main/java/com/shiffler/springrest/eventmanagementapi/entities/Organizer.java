@@ -16,6 +16,9 @@ public class Organizer extends AbstractEntity{
     @OneToMany(mappedBy = "organizer")
     private Set<Event> event;
 
+
+
+    
     public String getName() {
         return name;
     }

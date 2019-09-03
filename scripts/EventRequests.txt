@@ -63,3 +63,8 @@ on multiple query parameters if you want to. It also allows for paging functiona
 -http://localhost:8080/events-api/events?sort=id,desc,sort=name
 
 -http://localhost:8080/events-api/events?page=0&size=5
+
+Searching using custom queries configured in the repository. Everything is under search and uses the same method name.
+In this case name is the query parameter we're passing to the method signature in the Repository interface.
+
+-http://localhost:8080/events-api/organizers/search/findByName?name=JasonShiffler

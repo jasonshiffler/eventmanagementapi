@@ -1,5 +1,6 @@
 package com.shiffler.springrest.eventmanagementapi.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -13,6 +14,9 @@ public class AbstractEntity{
     @Column(nullable = false,updatable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
+
+    //Keeps this field from showing up in JSON data
+    @JsonIgnore
     @CreationTimestamp
     @Column(updatable = false)
     protected Instant created;

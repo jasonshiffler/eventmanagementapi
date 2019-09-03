@@ -1,6 +1,8 @@
 package com.shiffler.springrest.eventmanagementapi.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
@@ -9,10 +11,16 @@ import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.Set;
 
+
+//Allows us to define which parts of the JSON record are displayed first.
+@JsonPropertyOrder({"resourceId"})
 @Entity
 public class Event extends  AbstractEntity {
 
     private String name;
+
+    //This is used if you need to change the display name of the JSON data
+    @JsonProperty("desc")
     private String description;
 
     @Column(name = "starttime")
