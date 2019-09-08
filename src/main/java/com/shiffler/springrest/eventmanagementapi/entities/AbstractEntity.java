@@ -1,14 +1,16 @@
 package com.shiffler.springrest.eventmanagementapi.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
-
 import javax.persistence.*;
 import java.time.Instant;
 
+//Using lombok to generate all of our getters,setters,equals,hashcode,toString
+@Data
+//This class is used by Entities
 @MappedSuperclass
-public class AbstractEntity{
-
+public abstract class AbstractEntity{
 
     @Id
     @Column(nullable = false,updatable = false)
@@ -21,19 +23,4 @@ public class AbstractEntity{
     @Column(updatable = false)
     protected Instant created;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Instant getCreated() {
-        return created;
-    }
-
-    public void setCreated(Instant created) {
-        this.created = created;
-    }
 }

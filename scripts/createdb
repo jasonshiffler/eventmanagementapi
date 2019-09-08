@@ -7,7 +7,8 @@ use events;
 
 CREATE TABLE organizer
 (
-  id int  NOT NULL AUTO_INCREMENT,NAME varchar(20)  NOT NULL,
+  id int  NOT NULL AUTO_INCREMENT,
+  NAME varchar(32)  NOT NULL,
   created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 );
@@ -17,13 +18,13 @@ CREATE TABLE venue
 (
   id         int NOT NULL AUTO_INCREMENT,
   created    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  name       varchar(256),
-  streetaddress    varchar(256),
-  streetaddress2   varchar(256),
-  city              varchar(256),
-  state             varchar(256),
-  country           VARCHAR(256),
-  postalcode       varchar(256),
+  name       varchar(128),
+  streetaddress    varchar(128),
+  streetaddress2   varchar(128),
+  city              varchar(128),
+  state             varchar(32),
+  country           VARCHAR(32),
+  postalcode       varchar(16),
   PRIMARY KEY (id)
 );
 
@@ -32,8 +33,8 @@ CREATE TABLE event
 (
   id              int	NOT NULL AUTO_INCREMENT,
   created         TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
-  name            varchar(256),
-  description     varchar(2048),
+  name            varchar(100),
+  description     varchar(128),
   starttime      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   endtime        TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   zoneid         blob,
@@ -50,7 +51,7 @@ CREATE TABLE participant
 (
   id  	int        NOT NULL AUTO_INCREMENT,
   created    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  name      varchar(256) NOT NULL,
+  name      varchar(32) NOT NULL,
   email      varchar(256) NOT NULL,
   checkedin   int,
   event_id    int        NOT NULL,

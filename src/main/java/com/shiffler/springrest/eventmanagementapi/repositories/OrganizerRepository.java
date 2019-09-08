@@ -6,8 +6,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
-import java.util.List;
-
 public interface OrganizerRepository extends PagingAndSortingRepository<Organizer, Long> {
 
     //public List<Organizer> findByName(@Param("name") String name);

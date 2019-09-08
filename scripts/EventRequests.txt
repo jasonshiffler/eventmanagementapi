@@ -20,10 +20,10 @@ http://localhost:8080/events-api/events
 2) POST Request Body:
 
 {
-  "name" : "Rain Makers",
-  "description": "Make it Rain!",
-  "startTime" : "2017-08-29T14:46:18Z",
-  "endTime" : "2017-08-29T16:46:18Z",
+  "name" : "Rain Makers Part 2",
+  "description": "Make it Rain! Part 2",
+  "startTime" : "2017-08-30T14:46:18Z",
+  "endTime" : "2017-08-30T16:46:18Z",
   "zoneId" : "US/Central",
   "organizer" : "/organizers/1",
   "venue" : {
@@ -35,7 +35,6 @@ http://localhost:8080/events-api/events
     "country" : "United States",
     "postalCode" : "23450"
   }
-
 }
 
 
@@ -68,3 +67,11 @@ Searching using custom queries configured in the repository. Everything is under
 In this case name is the query parameter we're passing to the method signature in the Repository interface.
 
 -http://localhost:8080/events-api/organizers/search/findByName?name=JasonShiffler
+
+-http://localhost:8080/events-api/participants/search/findByNameAndCheckedIn?name=JasonShiffler&checkedin=false
+
+Use of projections to limit the data returned to a certain view
+-http://localhost:8080/events-api/events?projection=partial
+
+-Virtual View
+http://localhost:8080/events-api/venues?projection=virtual
